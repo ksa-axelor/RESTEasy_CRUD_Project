@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<listener>
+		<listener-class>
+		com.axelor.listner.ProductListner
+		</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>Resteasy</filter-name>
+		<filter-class>
+		org.jboss.resteasy.plugins.server.servlet.FilterDispatcher
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Resteasy</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-app>
