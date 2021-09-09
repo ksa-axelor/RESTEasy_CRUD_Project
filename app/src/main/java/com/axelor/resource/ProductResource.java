@@ -1,5 +1,11 @@
 package com.axelor.resource;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -9,8 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import org.jboss.resteasy.spi.HttpResponse;
 
 import com.axelor.db.Product;
 import com.axelor.service.ProductService;
@@ -24,33 +28,36 @@ public class ProductResource {
 	
 	@POST
 	@Path("/addProduct")
-	public Response addProduct(@FormParam("name") String name, @FormParam("value") int value) {
-//		@Context HttpServletResponse res
+	public void addProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("name") String name, @FormParam("value") int value) throws IOException {
 		Product p = new Product(name , value);
 		ps.addProduct(p);
-		return Response.ok("Product Added !").build();
-		
+		res.sendRedirect(req.getContextPath());	
 	}
 	
-	@POST
+//	@POST
+//	@Produces(MediaType.TEXT_PLAIN)
+	@GET
 	@Path("/showProduct")
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response showProduct() {
-		return Response.ok(ps.showProduct()).build();
+	public void showProduct(@Context HttpServletRequest req, @Context HttpServletResponse res) throws ServletException, IOException {
+		List<Product> p = ps.showProduct() ;
+		req.setAttribute("list",p);
+		RequestDispatcher rd =  req.getRequestDispatcher("../index.jsp");
+		rd.forward(req, res);
+//		res.sendRedirect(req.getContextPath());	
 	}
 	
 	@POST
 	@Path("/deleteProduct")
-	public Response deleteProduct(@FormParam("id") int id) {
+	public void deleteProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("id") int id) throws IOException {
 		ps.deleteProduct(id);
-		return Response.ok("Product deleted !").build();
+		res.sendRedirect(req.getContextPath());
 	}
 	
 	@POST
 	@Path("/updateProduct")
-	public Response updateProduct(@FormParam("id") int id,@FormParam("name") String name, @FormParam("value") int value) {
+	public void updateProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("id") int id,@FormParam("name") String name, @FormParam("value") int value) throws IOException{
 		ps.updateProduct(id,name,value);
-		return Response.ok("Product Updated !").build();
+		res.sendRedirect(req.getContextPath());
 	}
 	
 	

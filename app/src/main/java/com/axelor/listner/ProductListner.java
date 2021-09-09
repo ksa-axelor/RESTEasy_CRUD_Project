@@ -23,7 +23,6 @@ public class ProductListner extends GuiceResteasyBootstrapServletContextListener
 	
 	@Override
 	protected void withInjector(Injector injector) {
-		// TODO Auto-generated method stub
 		injector.getInstance(PersistService.class).start();
 	}
 
