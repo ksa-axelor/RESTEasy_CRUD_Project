@@ -1,31 +1,27 @@
-plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
-    id 'java'
-	id 'eclipse'
-	id 'war'
-	id 'eclipse-wtp'
-}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
 
 repositories {
- 
-    mavenCentral()
+ 	mavenCentral()
 }
 
 dependencies {
-    
-    implementation 'com.google.inject:guice:4.2.0'
+	implementation 'com.google.inject:guice:4.2.0'
+	
 	implementation 'com.google.inject.extensions:guice-servlet:4.2.0'
 	implementation 'com.google.inject.extensions:guice-persist:4.2.0'
 	
 	implementation 'org.jboss.resteasy:resteasy-jaxrs:3.6.0.Final'
 	implementation 'org.jboss.resteasy:resteasy-guice:3.6.0.Final'
 	
-	implementation 'org.hibernate:hibernate-core:5.3.2.Final'
-	implementation 'org.postgresql:postgresql:42.2.2'
+	 implementation group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.32.Final'
+     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
 
-   	implementation 'javax.servlet:javax.servlet-api:3.1.0'
-    
-    implementation 'javax.servlet:jstl:1.2'
-    
+   	 implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+   	 implementation group: 'javax.servlet.jsp.jstl', name: 'jstl-api', version: '1.2'
+   	 implementation group: 'taglibs', name: 'standard', version: '1.1.2'
+   	 	 
 }
 

@@ -28,10 +28,10 @@ public class ProductResource {
 	
 	@POST
 	@Path("/addProduct")
-	public void addProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("name") String name, @FormParam("value") int value) throws IOException {
+	public void addProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("name") String name, @FormParam("value") int value) throws ServletException,IOException {
 		Product p = new Product(name , value);
 		ps.addProduct(p);
-		res.sendRedirect(req.getContextPath());	
+		res.sendRedirect(req.getContextPath()+"/product/showProduct");	
 	}
 	
 //	@POST
@@ -41,23 +41,23 @@ public class ProductResource {
 	public void showProduct(@Context HttpServletRequest req, @Context HttpServletResponse res) throws ServletException, IOException {
 		List<Product> p = ps.showProduct() ;
 		req.setAttribute("list",p);
-		RequestDispatcher rd =  req.getRequestDispatcher("../index.jsp");
+		RequestDispatcher rd =  req.getRequestDispatcher("/index.jsp");
 		rd.forward(req, res);
-//		res.sendRedirect(req.getContextPath());	
 	}
 	
 	@POST
 	@Path("/deleteProduct")
-	public void deleteProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("id") int id) throws IOException {
+	public void deleteProduct(@Context HttpServletRequest req, @Context HttpServletResponse res) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
 		ps.deleteProduct(id);
-		res.sendRedirect(req.getContextPath());
+		res.sendRedirect(req.getContextPath()+"/product/showProduct");	
 	}
 	
 	@POST
 	@Path("/updateProduct")
-	public void updateProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("id") int id,@FormParam("name") String name, @FormParam("value") int value) throws IOException{
+	public void updateProduct(@Context HttpServletRequest req, @Context HttpServletResponse res, @FormParam("id") int id,@FormParam("name") String name, @FormParam("value") int value) throws IOException, ServletException{
 		ps.updateProduct(id,name,value);
-		res.sendRedirect(req.getContextPath());
+		showProduct(req, res);
 	}
 	
 	

@@ -5,21 +5,34 @@ pageEncoding="ISO-8859-1"%>
 	<head>
 		<meta charset="ISO-8859-1" />
 		<title>RESTEasy Project</title>
+		<style>
+			<%@ include file ="/form.css" %>
+		</style>
 	</head>
 	<body>
-		<h1>RESTEasy Project</h1>
-		<hr />
-		<hr />
-		<form action="product/addProduct" method="post">
-			<h3>Add Product</h3>
-			<label>Name of Product:</label>
-			<input type="text" name="name" required /><br />
-			<label>Value of Product:</label>
-			<input type="number" name="value" required /><br />
+		<h1 class="heading">RESTEasy Project</h1>
+		<h1 class="mini_heading">Add Product</h1>
+		<form
+			class="form"
+			action="<%=request.getContextPath()%>/product/addProduct"
+			method="post"
+			onsubmit="return alert('Product added successfully !');"
+		>
+			<div class="div">
+				<label>Name of Product:</label>
+				<input type="text" name="name" required /><br />
+			</div>
+			<div class="div">
+				<label>Value of Product:</label>
+				<input type="number" name="value" required /><br />
+			</div>
 
-			<input type="submit" value="submit" />
+			<input class="submit" type="submit" value="submit" />
 		</form>
-		<hr />
-			<h3><a href="../app">Home</a></h3>
+		<h3>
+			<a class="home" href="<%=request.getContextPath()%>/product/showProduct"
+				>Home</a
+			>
+		</h3>
 	</body>
 </html>

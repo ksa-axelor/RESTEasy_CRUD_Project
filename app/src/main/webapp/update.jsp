@@ -11,20 +11,17 @@ pageEncoding="ISO-8859-1"%>
 	</head>
 	<body>
 		<h1 class="heading">RESTEasy Project</h1>
-		<h1 class="mini_heading">Delete product</h1>
+		<h1 class="mini_heading">Update product</h1>
 		<form
 			class="form"
-			action="product/deleteProduct"
+			action="product/updateProduct"
 			method="post"
-			onsubmit="return confirm('Are you sure you want to Delete ?');"
+			onsubmit="return confirm('Are you sure you want to Update ?');"
 		>
 			<div class="div">
-				<label
-					>Id of Product:
-					<%=Integer.parseInt(request.getParameter("id"))%></label
-				>
-				<input type="hidden" name="id" required value
-				="<%=Integer.parseInt(request.getParameter("id"))%>" readonly/><br />
+				<label>Id of Product: <%=Integer.parseInt(request.getParameter("id"))%><label>
+					<input type="hidden" name="id" required value
+					="<%=Integer.parseInt(request.getParameter("id"))%>" readonly/><br />
 			</div>
 			<div class="div">
 				<label>Name of Product:</label>
@@ -37,13 +34,11 @@ pageEncoding="ISO-8859-1"%>
 				"<%=Integer.parseInt(request.getParameter("pvalue"))%>"/><br />
 			</div>
 
-			<input class="submit" type="submit" value="Delete" /><br />
+			<input class="submit" type="submit" value="submit" /><br />
 		</form>
 		<hr />
 		<h3>
-			<a class="home" href="<%=request.getContextPath()%>/product/showProduct"
-				>Home</a
-			>
+			<a class="home" href="<%=request.getContextPath()%>/product/showProduct">Home</a>
 		</h3>
 	</body>
 </html>
