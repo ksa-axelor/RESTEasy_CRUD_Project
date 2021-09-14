@@ -26,6 +26,10 @@ pageEncoding="ISO-8859-1"%>
 				<label>Value of Product:</label>
 				<input type="number" name="value" required /><br />
 			</div>
+			<div class="div">
+				<label>Accessories:</label>
+				<input type="text" name="accessories" required /><br />
+			</div>
 
 			<input class="submit" type="submit" value="submit" />
 		</form>

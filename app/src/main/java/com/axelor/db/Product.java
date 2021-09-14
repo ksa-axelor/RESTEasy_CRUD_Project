@@ -1,10 +1,15 @@
 package com.axelor.db;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Product {
@@ -16,6 +21,8 @@ public class Product {
 	private String pname;
 	@Column(name = "Product_value")
 	private int pvalue;
+	@OneToOne(mappedBy = "product" ,cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Accessories accessories;
 	
 	public Product() {
 		super();
@@ -28,6 +35,14 @@ public class Product {
 	}
 	
 	
+	public Accessories getAccessories() {
+		return accessories;
+	}
+
+	public void setAccessories(Accessories accessories) {
+		this.accessories = accessories;
+	}
+
 	public int getPid() {
 		return pid;
 	}

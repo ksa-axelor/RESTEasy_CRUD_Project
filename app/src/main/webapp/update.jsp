@@ -33,6 +33,11 @@ pageEncoding="ISO-8859-1"%>
 				<input type="number" name="value" required value =
 				"<%=Integer.parseInt(request.getParameter("pvalue"))%>"/><br />
 			</div>
+			<div class="div">
+				<label>Accessories:</label>
+				<input type="text" name="aname" required value =
+				"<%=request.getParameter("aname")%>"/><br />
+			</div>
 
 			<input class="submit" type="submit" value="submit" /><br />
 		</form>

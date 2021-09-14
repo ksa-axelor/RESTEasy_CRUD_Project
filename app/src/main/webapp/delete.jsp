@@ -29,12 +29,17 @@ pageEncoding="ISO-8859-1"%>
 			<div class="div">
 				<label>Name of Product:</label>
 				<input type="text" name="name" required value =
-				"<%=request.getParameter("pname")%>"/><br />
+				"<%=request.getParameter("pname")%>" readonly/><br />
 			</div>
 			<div class="div">
 				<label>Value of Product:</label>
 				<input type="number" name="value" required value =
-				"<%=Integer.parseInt(request.getParameter("pvalue"))%>"/><br />
+				"<%=Integer.parseInt(request.getParameter("pvalue"))%>" readonly/><br />
+			</div>
+			<div class="div">
+				<label>Accessories:</label>
+				<input type="text" name="aname" required value =
+				"<%=request.getParameter("aname")%>" readonly/><br />
 			</div>
 
 			<input class="submit" type="submit" value="Delete" /><br />

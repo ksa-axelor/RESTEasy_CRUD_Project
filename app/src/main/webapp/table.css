@@ -24,6 +24,37 @@
 	/* text-decoration: none; */
 }
 
+.form {
+	margin: auto;
+	width: 40%;
+	display: flex;
+}
+
+.div {
+	margin: 0 10px;
+}
+
+input {
+	font-size: 20px;
+}
+
+select {
+	font-size: 20px;
+}
+
+.submit {
+	cursor: pointer;
+	outline: none;
+	border: none;
+	padding: 1px 15px;
+	font-size: 22px;
+	border-radius: 6px;
+}
+
+.submit:hover {
+	background-color: #009879;
+}
+
 .table {
 	border-collapse: collapse;
 	margin: 20px 25px;
